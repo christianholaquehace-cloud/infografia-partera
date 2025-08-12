@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia de Dos Partos: La Trayectoria del Cuidado Obstétrico en México</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9E4D4;
+            color: #4C3A51;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+        .stat-number {
+            font-weight: 900;
+            color: #B25068;
+        }
+        .timeline-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #E7AB79;
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding-bottom: 2rem;
+        }
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 2rem;
+            text-align: right;
+        }
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 2rem;
+            text-align: left;
+        }
+        .timeline-dot {
+            position: absolute;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background-color: #B25068;
+            border-radius: 50%;
+            border: 4px solid #F9E4D4;
+        }
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+            transform: translateX(50%);
+        }
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+            transform: translateX(-50%);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#4C3A51] mb-2">Historia de Dos Partos</h1>
+            <p class="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto">En México, la historia del parto se debate entre dos modelos: el biomédico institucional y el tradicional comunitario, una tensión con profundas consecuencias sociales y de salud.</p>
+        </header>
+
+        <main class="space-y-8">
+
+            <section class="card text-center">
+                <h2 class="text-2xl font-bold text-[#4C3A51] mb-2">La Deuda Histórica con las Mujeres Indígenas</h2>
+                <p class="max-w-4xl mx-auto mb-4">La desigualdad estructural y la marginación del conocimiento tradicional se reflejan en las estadísticas vitales. La mortalidad materna no es uniforme; golpea con más fuerza a quienes han sido históricamente excluidas.</p>
+                <div class="text-center p-4">
+                    <p class="text-3xl md:text-4xl font-bold text-[#4C3A51] max-w-4xl mx-auto leading-tight">
+                        En México, la probabilidad de que una mujer indígena muera por causas relacionadas con el embarazo es <span class="stat-number">entre 2 y 3 veces mayor</span> que la del promedio nacional.
+                    </p>
+                </div>
+            </section>
+            
+            <section class="card">
+                <h2 class="text-2xl font-bold text-center text-[#4C3A51] mb-6">La Construcción del Modelo Mexicano: Una Línea de Tiempo</h2>
+                <p class="text-center max-w-4xl mx-auto mb-8">Desde el sincretismo de la colonia hasta la institucionalización del siglo XX, el rol de la partera tradicional ha sido constantemente redefinido y, a menudo, marginado por el avance del modelo médico hegemónico.</p>
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="font-bold text-lg text-[#B25068]">Siglo XVI: Colonia</h3>
+                        <p>Se produce un sincretismo entre la partería mesoamericana y las prácticas europeas. La Inquisición persigue a parteras indígenas acusadas de brujería.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="font-bold text-lg text-[#B25068]">1833: México Independiente</h3>
+                        <p>Se funda el Establecimiento de Ciencias Médicas, sentando las bases para la profesionalización de la medicina que excluye el saber tradicional de las parteras.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="font-bold text-lg text-[#B25068]">1943: México Moderno</h3>
+                        <p>La creación del Instituto Mexicano del Seguro Social (IMSS) impulsa un modelo de salud pública centralizado y hospitalario, acelerando la medicalización del parto.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="font-bold text-lg text-[#B25068]">Década de 1970</h3>
+                        <p>El gobierno mexicano implementa programas para "capacitar" a parteras tradicionales, un intento de asimilarlas al modelo biomédico que a menudo ignora su propio conocimiento.</p>
+                    </div>
+                     <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="font-bold text-lg text-[#B25068]">1994: Zapatismo</h3>
+                        <p>El levantamiento Zapatista visibiliza las demandas de las comunidades indígenas, incluyendo el derecho a la salud con pertinencia cultural y el respeto a la partería tradicional.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <h3 class="font-bold text-lg text-[#B25068]">2016: Regulación</h3>
+                        <p>Se publica la NOM-007-SSA2-2016, que por primera vez incluye lineamientos para la integración de parteras tradicionales y la promoción del parto humanizado.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h2 class="text-2xl font-bold text-center text-[#4C3A51] mb-2">La Institucionalización del Parto</h2>
+                    <p class="text-center mb-4">Durante el siglo XX, las políticas de salud pública en México promovieron activamente el parto hospitalario como sinónimo de seguridad y modernidad, contribuyendo al declive de la atención domiciliaria.</p>
+                    <div class="chart-container h-80">
+                        <canvas id="hospitalBirthsChart"></canvas>
+                    </div>
+                    <p class="text-center text-sm mt-4 text-gray-600">Este gráfico muestra el aumento de los partos atendidos en instituciones de salud en México, un reflejo de las políticas de desarrollo del siglo pasado.</p>
+                </div>
+                <div class="card">
+                    <h2 class="text-2xl font-bold text-center text-[#4C3A51] mb-2">La Resistencia y el Saber Ancestral</h2>
+                    <p class="text-center mb-4">Frente a la medicalización, la partería tradicional y el movimiento por el parto humanizado en México defienden un modelo de atención centrado en la mujer, su cultura y su fisiología.</p>
+                    <div class="space-y-4 text-center">
+                        <div class="p-4 bg-rose-100 border-l-4 border-[#B25068] rounded">
+                            <h3 class="font-bold text-[#4C3A51]">La Partera Tradicional</h3>
+                            <p>Custodia del saber ancestral, utiliza técnicas como la sobada, el uso del rebozo y la herbolaria. Es una figura central en la vida comunitaria.</p>
+                        </div>
+                        <div class="p-4 bg-rose-100 border-l-4 border-[#B25068] rounded">
+                            <h3 class="font-bold text-[#4C3A51]">Movimiento de Parto Humanizado</h3>
+                            <p>Organizaciones como Kinal Antzetik luchan por el derecho a decidir, el parto en libre movimiento y la erradicación de la violencia obstétrica.</p>
+                        </div>
+                        <div class="p-4 bg-rose-100 border-l-4 border-[#B25068] rounded">
+                            <h3 class="font-bold text-[#4C3A51]">Doulas y Educadoras Perinatales</h3>
+                            <p>Ofrecen acompañamiento físico y emocional, sirviendo de puente entre el sistema médico y los deseos de la mujer gestante.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card">
+                <h2 class="text-2xl font-bold text-center text-[#4C3A51] mb-2">Las Consecuencias: Dos Modelos, Dos Realidades</h2>
+                <p class="text-center max-w-4xl mx-auto mb-6">La tensión entre el modelo médico y el tradicional es evidente. La composición del personal de salud y las tasas de mortalidad reflejan un sistema fracturado donde el acceso y la calidad de la atención no son iguales para todas.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="w-full">
+                        <h3 class="text-xl font-bold text-center text-[#4C3A51] mb-4">Modelos de Atención al Parto</h3>
+                        <div class="chart-container h-96">
+                            <canvas id="workforceChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm mt-4 text-gray-600">El sistema de salud está dominado por obstetras, mientras que las parteras tradicionales, aunque numerosas, a menudo operan en la periferia del sistema formal.</p>
+                    </div>
+                    <div class="w-full">
+                        <h3 class="text-xl font-bold text-center text-[#4C3A51] mb-4">Tasas de Mortalidad Materna</h3>
+                        <div class="chart-container h-96">
+                            <canvas id="mortalityChart"></canvas>
+                        </div>
+                        <p class="text-center text-sm mt-4 text-gray-600">Muertes maternas por cada 100,000 nacidos vivos. La brecha entre mujeres indígenas y el promedio nacional evidencia una profunda inequidad en salud.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="card">
+                <h2 class="text-2xl font-bold text-center text-[#4C3A51] mb-6">Un Camino Hacia un Futuro con Equidad</h2>
+                <p class="text-center max-w-4xl mx-auto mb-8">La evidencia es clara. Mejorar la salud materna en México requiere un cambio fundamental hacia un modelo intercultural que integre, respete y valore la colaboración, la equidad y la autonomía.</p>
+                <div class="flex flex-col md:flex-row items-stretch justify-center space-y-4 md:space-y-0 md:space-x-4">
+                    <div class="p-4 bg-purple-100 border-t-4 border-[#7A577A] rounded-lg text-center w-full md:w-1/3 flex flex-col">
+                        <span class="text-5xl mb-2">🤝</span>
+                        <h3 class="font-bold text-lg text-[#4C3A51]">Integrar a las Parteras</h3>
+                        <p class="text-sm flex-grow">Reconocer y articular a las parteras tradicionales y profesionales en el Sistema Nacional de Salud, respetando su autonomía y su conocimiento.</p>
+                    </div>
+                    <div class="p-4 bg-purple-100 border-t-4 border-[#7A577A] rounded-lg text-center w-full md:w-1/3 flex flex-col">
+                        <span class="text-5xl mb-2">⚖️</span>
+                        <h3 class="font-bold text-lg text-[#4C3A51]">Salud con Interculturalidad</h3>
+                        <p class="text-sm flex-grow">Desmantelar el racismo estructural en los servicios de salud, garantizando una atención culturalmente pertinente y libre de discriminación.</p>
+                    </div>
+                    <div class="p-4 bg-purple-100 border-t-4 border-[#7A577A] rounded-lg text-center w-full md:w-1/3 flex flex-col">
+                        <span class="text-5xl mb-2">♀️</span>
+                        <h3 class="font-bold text-lg text-[#4C3A51]">Centrar la Autonomía de la Mujer</h3>
+                        <p class="text-sm flex-grow">Priorizar el consentimiento informado, el respeto a las decisiones de las mujeres sobre su cuerpo y la lucha contra la violencia obstétrica.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 py-6 border-t border-gray-300">
+            <p class="text-gray-600">Infografía adaptada al contexto mexicano, basada en datos de la Secretaría de Salud, CONEVAL e informes sobre partería en México.</p>
+        </footer>
+    </div>
+
+    <script>
+        const FONT_COLOR = '#4C3A51';
+        const GRID_COLOR = '#EAEAEA';
+        const PALETTE = {
+            purple: '#4C3A51',
+            magenta: '#B25068',
+            pink: '#E7AB79',
+            cream: '#F9E4D4',
+            gray: '#A9A9A9'
+        };
+
+        const tooltipPlugin = {
+            tooltip: {
+                backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                titleFont: { size: 16, weight: 'bold' },
+                bodyFont: { size: 14 },
+                padding: 12,
+                cornerRadius: 4,
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        return Array.isArray(label) ? label.join(' ') : label;
+                    }
+                }
+            }
+        };
+        
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            new Chart(document.getElementById('hospitalBirthsChart'), {
+                type: 'line',
+                data: {
+                    labels: ['1950', '1970', '1990', '2000', '2010', '2020'],
+                    datasets: [{
+                        label: '% de Nacimientos en Instituciones de Salud',
+                        data: [12, 45, 75, 84, 95, 97],
+                        borderColor: PALETTE.magenta,
+                        backgroundColor: PALETTE.magenta + '33',
+                        fill: true,
+                        tension: 0.4,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { ...tooltipPlugin, legend: { display: false } },
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: { color: FONT_COLOR, callback: value => value + '%' },
+                            grid: { color: GRID_COLOR }
+                        },
+                        x: { 
+                            ticks: { color: FONT_COLOR },
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+            new Chart(document.getElementById('workforceChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Atención por Obstetra', 'Atención por Partera o Enfermera Obstetra'],
+                    datasets: [{
+                        label: 'Modelo de Atención',
+                        data: [85, 15],
+                        backgroundColor: [PALETTE.purple, PALETTE.pink],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { ...tooltipPlugin, legend: { position: 'bottom' } },
+                    cutout: '60%'
+                }
+            });
+            
+            const mortalityLabels = ['Promedio Nacional', 'Mujeres Indígenas'].map(l => wrapLabel(l, 16));
+            new Chart(document.getElementById('mortalityChart'), {
+                type: 'bar',
+                data: {
+                    labels: mortalityLabels,
+                    datasets: [{
+                        label: 'Muertes Maternas por cada 100,000 Nacidos Vivos',
+                        data: [31, 74],
+                        backgroundColor: [PALETTE.pink, PALETTE.magenta],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { ...tooltipPlugin, legend: { display: false } },
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            ticks: { color: FONT_COLOR },
+                            grid: { color: GRID_COLOR }
+                        },
+                        x: { 
+                            ticks: { color: FONT_COLOR },
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
